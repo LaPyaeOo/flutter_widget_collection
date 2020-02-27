@@ -1,142 +1,93 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Expanded_tutorial());
+  runApp(ExpandedTutorial());
 }
 
-class Expanded_tutorial extends StatelessWidget {
+class ExpandedTutorial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: My_home()
-    );
+    return MaterialApp(home: MyHome() //My home object
+        );
   }
 }
-Widget tab_bar(){
-  return Expanded(
-                flex: 1,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    Text(
-                      'Today\'s plan',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
-                    ),
-                    Text(
-                      'Dashboard',
-                      style: TextStyle(
-                        fontSize: 18.0,
-                      ),
-                    )
-                  ],
-                ));
-}
-Widget title(){
-   return Expanded(
-                flex: 1,
-                child: Container(
-                  child: Center(
-                    child: Text(
-                      'iFit COACH',
-                      style: TextStyle(
-                          fontSize: 28.0, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ));
-}
-Widget activity(){
-   return Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.all(5.0),
-                  padding: EdgeInsets.only(left: 22.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Activity',
-                    style: TextStyle(
-                      letterSpacing: 5.0,
-                      fontSize: 22.0,
-                      color: Colors.white,
-                    ),
-                  ),
-                  color: Colors.blue,
-                ));
-}
-Widget workouts(){
- return Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.all(5.0),
-                  padding: EdgeInsets.only(left: 22.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Workouts',
-                    style: TextStyle(
-                        letterSpacing: 5.0,
-                        fontSize: 22.0,
-                        color: Colors.white),
-                  ),
-                  color: Colors.amber,
-                ));
 
-}
-Widget nutrition(){
+// Expanded Widget methods
+Widget tabBar() {
   return Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.all(5.0),
-                  padding: EdgeInsets.only(left: 22.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Nutrition',
-                    style: TextStyle(
-                        letterSpacing: 5.0,
-                        fontSize: 22.0,
-                        color: Colors.white),
-                  ),
-                  color: Colors.green,
-                ));
+      flex: 1,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text(
+            'Today\'s plan',
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          ),
+          Text(
+            'Dashboard',
+            style: TextStyle(
+              fontSize: 18.0,
+            ),
+          )
+        ],
+      ));
 }
-Widget sleep(){
+
+Widget title() {
   return Expanded(
-                flex: 2,
-                child: Container(
-                  margin: EdgeInsets.all(5.0),
-                  padding: EdgeInsets.only(left: 22.0),
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    'Sleep',
-                    style: TextStyle(
-                        letterSpacing: 5.0,
-                        fontSize: 22.0,
-                        color: Colors.white),
-                  ),
-                  color: Colors.teal,
-                ));
+      flex: 1,
+      child: Container(
+        child: Center(
+          child: Text(
+            'iFit COACH',
+            style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ));
 }
-class My_home extends StatelessWidget {
+
+Widget myWidget(String txt,Color cardColor) {
+  return Expanded(
+      flex: 2,
+      child: Container(
+        margin: EdgeInsets.all(5.0),
+        padding: EdgeInsets.only(left: 22.0),
+        alignment: Alignment.centerLeft,
+        child: Text(
+          txt,
+          style: TextStyle(
+              letterSpacing: 5.0, fontSize: 22.0, color: Colors.white),
+        ),
+        color: cardColor,
+      ));
+}
+
+//My home Class
+class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Container(
-            child: Text('Sport'),
-            alignment: Alignment.center,
-          ),
+      backgroundColor: Colors.blue,
+      appBar: AppBar(
+        title: Container(
+          child: Text('Sport'),
+          alignment: Alignment.center,
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            title(),
-            tab_bar(),
-           activity(),
-            workouts(),
-           nutrition(),
-           sleep()
-          ],
-        ),
-      );
+      ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          title(),
+          tabBar(),
+          myWidget('ACTIVITY', Colors.cyan),
+          myWidget('WORKOUT', Colors.amber),
+          myWidget('NUTRITION', Colors.green),
+          myWidget('SLEEP', Colors.teal)
+        ],
+      ),
+    );
   }
 }
+
